@@ -14,8 +14,10 @@ public class GetItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<CurrentEquipWeapon>().weaponID = weaponID;
+            
             other.GetComponent<CurrentEquipWeapon>().WeaponPref =
                 Resources.Load("Prefabs/Weapon/"+ weaponID) as GameObject;
+            Debug.Log("Object rotation value" + other.GetComponent<CurrentEquipWeapon>().WeaponPref.transform.rotation );
             other.GetComponent<CurrentEquipWeapon>().equipWeapon();
         }
     }

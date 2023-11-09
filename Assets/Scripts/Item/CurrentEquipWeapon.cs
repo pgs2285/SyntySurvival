@@ -22,7 +22,7 @@ public class CurrentEquipWeapon : MonoBehaviour
 
     public void equipWeapon()
     {
-        Instantiate(_weaponPref, weaponPos.position, _weaponPref.transform.rotation, weaponPos);   
+        Instantiate(_weaponPref, weaponPos.position, _weaponPref.transform.localRotation, weaponPos);   
     }
     #endregion Properties
 }

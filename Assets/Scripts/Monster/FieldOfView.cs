@@ -16,6 +16,7 @@ public class FieldOfView : MonoBehaviour
     public List<Transform> VisibleTargets => visibleTargets;
 
     private Transform nearestTarget;
+    public Transform NearestTarget => nearestTarget;
     private float distanceToTarget;
     public float delay = 0.1f;
     #endregion Variables

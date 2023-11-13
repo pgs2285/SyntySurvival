@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class IdleState : State<EnemyController>
 {
     private Animator animator;
     private CharacterController characterController;
-
+    private NavMeshAgent agent;
     protected int hashMove = Animator.StringToHash("Move");
     protected int hashMoveSpeed = Animator.StringToHash("MoveSpeed");
 
@@ -14,12 +15,15 @@ public class IdleState : State<EnemyController>
     {
         animator = context.GetComponent<Animator>();
         characterController = context.GetComponent<CharacterController>();
+        agent = context.GetComponent<NavMeshAgent>();
     }
 
     public override void OnEnter()
     {
         animator?.SetBool(hashMove, false);
         characterController?.Move(Vector3.zero);
+        agent.ResetPath();
+        
     }
 
     public override void Update(float deltaTime)
@@ -27,14 +31,13 @@ public class IdleState : State<EnemyController>
         Transform enemy = context.Target;
         if (enemy != null)
         {
-            if (context.IsAvailableAttack)
-            {
-                // stateMachine.ChangeState<AttackState>();
-            }
-            else
-            {
+
                 stateMachine.ChangeState<MoveState>();
-            }
+            
+        }
+        else
+        {
+            
         }
     }
 }

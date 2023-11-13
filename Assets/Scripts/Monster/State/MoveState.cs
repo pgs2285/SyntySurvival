@@ -40,8 +40,9 @@ public class MoveState : State<EnemyController>
         if (enemy)
         {
             agent.SetDestination(enemy.position);
-            if (agent.remainingDistance > agent.stoppingDistance)
+            if (agent.remainingDistance >= agent.stoppingDistance)
             {
+                Debug.Log("remaining : "  + agent.remainingDistance + " / stopping : " + agent.stoppingDistance + "  /  ");
                 characterController.Move(agent.velocity * deltaTime);
                 animator.SetFloat(moveSpeedHash, agent.velocity.magnitude / agent.speed , .1f, deltaTime); // magnitude 는 벡터의 크기를 리턴한다.
                 return;

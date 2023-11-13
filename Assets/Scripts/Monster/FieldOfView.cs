@@ -34,7 +34,7 @@ public class FieldOfView : MonoBehaviour
             Transform t = target.transform;
 
             Vector3 dirToTarget = (target.transform.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToTarget) < (viewRadius / 2))
+            if (Vector3.Angle(transform.forward, dirToTarget) < (viewAngle / 2))
             {
                 float distToTarget = Vector3.Distance(transform.position, target.transform.position);
                 if (!Physics.Raycast(transform.position, target.transform.position, distToTarget, obstacleMask))    //감지된 적이 없으면,

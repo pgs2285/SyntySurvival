@@ -7,6 +7,7 @@ public class CurrentEquipWeapon : MonoBehaviour
     #region Variables
     [HideInInspector] public int weaponID;
     private GameObject _weaponPref;
+    private Animator animator;
 
     public GameObject WeaponPref
     {
@@ -27,4 +28,19 @@ public class CurrentEquipWeapon : MonoBehaviour
         
     }
     #endregion Properties
+    #region Unity Methods
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            animator.SetTrigger("Attack");
+            Debug.Log("Attack");
+        }
+    }
+    #endregion Unity Methods
 }
